@@ -4,7 +4,8 @@
  */
 
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   PREFIX = BUI.prefix,
   CLS_GRID_CASCADE = '',
   DATA_RECORD = 'data-record',

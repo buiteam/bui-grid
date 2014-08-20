@@ -1,5 +1,6 @@
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   PREFIX = BUI.prefix,
   CLS_HD_TITLE = PREFIX + 'grid-hd-title',
   CLS_GROUP = PREFIX + 'grid-column-group',

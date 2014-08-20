@@ -3,7 +3,8 @@
  * @ignore
  */
 
- var BUI = require('bui-common'),
+ var $ = require('jquery'),
+  BUI = require('bui-common'),
   Editing = require('./editing'),
   CLS_ROW = BUI.prefix + 'grid-row';
 

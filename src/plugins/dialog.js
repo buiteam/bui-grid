@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   TYPE_ADD = 'add',
   TYPE_EDIT = 'edit';
 
@@ -125,7 +126,7 @@ BUI.augment(Dialog,{
     var _self = this;
     _self.set('grid',grid);
     //延迟加载 editor模块
-    BUI.use('bui/editor',function(Editor){
+    require.async('bui-editor',function(Editor){
       _self._initEditor(Editor);
       _self.fire('editorready');
     });

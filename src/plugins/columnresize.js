@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   NUM_DIS = 15,
   NUM_MIN = 30,
   STYLE_CURSOR = 'col-resize';

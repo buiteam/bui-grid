@@ -4,6 +4,8 @@
  * @ignore
  */
 
+var $ = require('jquery');
+
 function formatTimeUnit(v) {
     if (v < 10) {
         return '0' + v;

@@ -4,7 +4,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   PREFIX = BUI.prefix,
   CLS_GRID_ROW = PREFIX + 'grid-row',
   CLS_GRID_BODY = PREFIX + 'grid-body',

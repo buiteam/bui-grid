@@ -1,5 +1,6 @@
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   DATA_GROUP = 'data-group',
   PREFIX = BUI.prefix,
   CLS_GROUP = PREFIX + 'grid-row-group',

@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   Menu = require('bui-menu'),
   PREFIX = BUI.prefix,
   ID_SORT_ASC = 'sort-asc',

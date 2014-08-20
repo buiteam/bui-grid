@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   PREFIX = BUI.prefix,
   CLS_CHECKBOX = PREFIX + 'grid-checkBox',
   CLS_CHECK_ICON = 'x-grid-checkbox',

@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var Editing = require('./editing'),
+var $ = require('jquery'),
+  Editing = require('./editing'),
   CLS_BODY = BUI.prefix + 'grid-body',
   CLS_CELL = BUI.prefix + 'grid-cell';
 

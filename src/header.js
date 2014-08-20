@@ -4,7 +4,8 @@
  * @ignore
  */
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   PREFIX = BUI.prefix,
   Grid = BUI.namespace('Grid'),
   Column = require('./column'),

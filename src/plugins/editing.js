@@ -3,7 +3,8 @@
  * @ignore
  */
 
-var CLS_CELL_INNER = BUI.prefix + 'grid-cell-inner',
+var $ = require('jquery'),
+  CLS_CELL_INNER = BUI.prefix + 'grid-cell-inner',
   CLS_CELL_ERROR = BUI.prefix + 'grid-cell-error';
 /**
  * 表格的编辑插件
@@ -142,7 +143,7 @@ BUI.augment(Editing,{
     var _self = this,
       grid = _self.get('grid');
     //延迟加载 editor模块
-    BUI.use('bui/editor',function(Editor){
+    require.async('bui-editor',function(Editor){
       _self.initEditors(Editor);
       _self._initGridEvent(grid);
       _self.set('isInitEditors',true);

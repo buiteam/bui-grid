@@ -5,7 +5,8 @@
  */
 
 
-var BUI = require('bui-common'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   Mask = require('bui-mask'),
   UA = BUI.UA,
   Component = BUI.Component,
