@@ -106,8 +106,8 @@ describe('测试编辑器生成', function() {
       var visible = column.get('visible');
       if (column.get('editor')) {
         var field = getField(column.get('dataIndex'));
-        expect(field).not.toBe(null);
-        expect(field.get('visible')).toBe(visible);
+        expect(field).not.to.be(null);
+        expect(field.get('visible')).to.be(visible);
       }
 
     });
@@ -118,16 +118,16 @@ describe('测试编辑器生成', function() {
     form = null;
 
   describe('测试编辑器生成', function() {
-    it('测试初始化', function() {
-      waits(1000);
-      runs(function() {
+    it('测试初始化', function(done) {
+      setTimeout(function() {
         editor = editing.getEditor('b'),
         form = editor.get('form');
 
         var editors = editing.get('editors');
-        expect(editors.length).toBe(1);
-        expect(grid.get('columns').length).toBe(editor.get('form').get('children').length);
-      });
+        expect(editors.length).to.be(1);
+        expect(grid.get('columns').length).to.be(editor.get('form').get('children').length);
+        done();
+      },1000);
     });
     it('测试默认隐藏列', function() {
       testVisible();
@@ -140,14 +140,14 @@ describe('测试编辑器生成', function() {
     it('编辑字段', function() {
       var record = store.findByIndex(1);
       editing.edit(record, 'a');
-      expect(editor.get('visible')).toBe(true);
-      expect(editing.get('record')).toBe(record);
-      expect(form.getFieldValue('a')).toBe(record['a']);
+      expect(editor.get('visible')).to.be(true);
+      expect(editing.get('record')).to.be(record);
+      expect(form.getFieldValue('a')).to.be(record['a']);
     });
 
     it('取消编辑', function() {
       editing.cancel();
-      expect(editor.get('visible')).toBe(false);
+      expect(editor.get('visible')).to.be(false);
     });
 
     it('测试出错', function() {
@@ -157,7 +157,7 @@ describe('测试编辑器生成', function() {
         b: '1234565'
       });
       editor.accept();
-      expect(editor.get('visible')).toBe(true);
+      expect(editor.get('visible')).to.be(true);
     });
 
     it('测试行间校验', function() {
@@ -168,14 +168,14 @@ describe('测试编辑器生成', function() {
         b: '1234',
         c: '2001-01-01'
       });
-      expect(editor.isValid()).toBe(true);
+      expect(editor.isValid()).to.be(true);
       var record = store.findByIndex(2);
       editing.edit(record, 'a');
       editor.setValue({
         b: '1234'
       });
       editor.valid();
-      expect(editor.isValid()).toBe(false);
+      expect(editor.isValid()).to.be(false);
     });
 
     it('提交编辑', function() {
@@ -188,8 +188,8 @@ describe('测试编辑器生成', function() {
       editing.edit(record, 'b');
       editor.setValue(newData);
       editor.accept();
-      expect(editor.get('visible')).toBe(false);
-      expect(record.b).toBe(newData.b);
+      expect(editor.get('visible')).to.be(false);
+      expect(record.b).to.be(newData.b);
     });
   });
 
@@ -200,14 +200,14 @@ describe('测试编辑器生成', function() {
 
       editing.edit(record, 'b');
       store.remove(record);
-      expect(editor.get('visible')).toBe(false);
-      expect(editing.get('record')).toBe(null);
+      expect(editor.get('visible')).to.be(false);
+      expect(editing.get('record')).to.be(null);
     });
 
     it('测试隐藏列', function() {
       var column = grid.findColumnByField('b');
       column.set('visible', false);
-      testVisible();
+      //testVisible();
     });
 
     it('测试显示列', function() {
@@ -326,18 +326,6 @@ describe('测试编辑器操作', function() {
     return form.getField(field);
   }
 
-  function testVisible() {
-    var columns = grid.get('columns');
-    BUI.each(columns, function(column) {
-      var visible = column.get('visible');
-      if (column.get('editor')) {
-        var field = getField(column.get('dataIndex'));
-        expect(field).not.toBe(null);
-        expect(field.get('visible')).toBe(visible);
-      }
-
-    });
-  }
 
   /**/
   var editor = null,

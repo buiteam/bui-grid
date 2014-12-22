@@ -54,7 +54,7 @@ describe("测试生成check列", function() {
     var
       rows = bodyEl.find('.bui-grid-row');
     rows.each(function(index, row) {
-      expect($(row).find('.' + CLS_RADIO)).not.toBe(null);
+      expect($(row).find('.' + CLS_RADIO)).not.to.be(null);
     });
 
   });
@@ -71,9 +71,9 @@ describe("测试事件", function() {
       row = rows[index],
       radio = $(row).find('.' + CLS_RADIO);
     grid.setSelection(record);
-    expect(!!radio.attr('checked')).toBe(true);
+    expect(!!radio.attr('checked')).to.be(true);
     grid.clearSelection();
-    expect(!!radio.attr('checked')).toBe(false);
+    expect(!!radio.attr('checked')).to.be(false);
   });
 
 

@@ -62,30 +62,29 @@ describe('测试展开折叠列生成', function() {
 
   it('测试生成折叠列', function() {
     var columns = grid.get('columns');
-    expect(columns[0].get('title')).toBe('');
+    expect(columns[0].get('title')).to.be('');
 
   });
   it('测试生成折图标', function() {
-    expect(el.find('.bui-grid-cascade').length).toBe(data.length);
+    expect(el.find('.bui-grid-cascade').length).to.be(data.length);
   });
 
-  it('测试展开,折叠', function() {
+  it('测试展开,折叠', function(done) {
     var cell = el.find('.' + CLS_CASCADE).first(),
       row = cell.parents('.bui-grid-row');
     cell.trigger('click');
-    waits(100);
-    runs(function() {
+    setTimeout(function() {
       var cascadeRow = row.next('.' + CLS_CASCADE_ROW);
-      expect(cascadeRow.length).toBe(1);
-      expect(cascadeRow.hasClass(CLS_CASCADE + '-collapse')).not.toBe(true);
+      expect(cascadeRow.length).to.be(1);
+      expect(cascadeRow.hasClass(CLS_CASCADE + '-collapse')).not.to.be(true);
 
       cell.trigger('click');
-      waits(100);
-      runs(function() {
-        expect(cascadeRow.hasClass(CLS_CASCADE + '-collapse')).toBe(true);
-      });
+      setTimeout(function() {
+        expect(cascadeRow.hasClass(CLS_CASCADE + '-collapse')).to.be(true);
+        done();
+      },100);
 
-    });
+    },100);
   });
 
 });
@@ -94,41 +93,41 @@ describe('测试操作展开，折叠', function() {
 
   it('全部展开', function() {
     cascade.expandAll();
-    expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(data.length);
-    expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).toBe(false);
+    expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(data.length);
+    expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).to.be(false);
   });
 
   it('全部折叠', function() {
     cascade.collapseAll();
-    expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).toBe(true);
+    expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).to.be(true);
   });
 
   it('清除展开列', function() {
     cascade.removeAll();
-    expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(0);
+    expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(0);
   });
 
   it('测试展开事件', function() {
-    var callback = jasmine.createSpy();
+    var callback = sinon.spy();
     cascade.on('expand', callback);
     cascade.expandAll();
-    expect(callback).toHaveBeenCalled();
+    expect(callback.called).to.be(true);
     cascade.off('expand', callback);
   });
 
   it('测试折叠事件', function() {
-    var callback = jasmine.createSpy();
+    var callback = sinon.spy();
     cascade.on('collapse', callback);
     cascade.collapseAll();
-    expect(callback).toHaveBeenCalled();
+    expect(callback.called).to.be(true);
     cascade.off('collapse', callback);
   });
 
   it('测试移除事件', function() {
-    var callback = jasmine.createSpy();
+    var callback = sinon.spy();
     cascade.on('removed', callback);
     cascade.removeAll();
-    expect(callback).toHaveBeenCalled();
+    expect(callback.called).to.be(true);
     cascade.off('removed', callback);
   });
 });
@@ -138,7 +137,7 @@ describe('测试列变化', function() {
   function testColspan(rows) {
     $.each(rows, function(index, row) {
       var gridRow = $(row).prev();
-      expect($(row).find('.bui-grid-cascade-cell').attr('colspan')).toBe(cascade._getColumnCount(gridRow).toString());
+      expect($(row).find('.bui-grid-cascade-cell').attr('colspan')).to.be(cascade._getColumnCount(gridRow).toString());
     });
   }
   it('测试添加、删除列', function() {
@@ -178,7 +177,7 @@ describe('测试行变化', function() {
       a: '124344'
     };
     store.add(record);
-    expect(el.find('.bui-grid-cascade').length).toBe(store.getCount());
+    expect(el.find('.bui-grid-cascade').length).to.be(store.getCount());
   });
 
   it('测试删除纪录', function() {
@@ -188,13 +187,13 @@ describe('测试行变化', function() {
     }, function(obj1, obj2) {
       return obj1.a == obj2.a;
     });
-    expect(el.find('.bui-grid-cascade').length).toBe(store.getCount());
+    expect(el.find('.bui-grid-cascade').length).to.be(store.getCount());
 
   });
 
   it('测试清空纪录', function() {
     store.setResult([]);
-    expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(0);
+    expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(0);
     store.setResult(data);
   });
 }); /**/

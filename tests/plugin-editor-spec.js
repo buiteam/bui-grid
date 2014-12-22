@@ -6,6 +6,9 @@ var $ = require('jquery'),
   Format = require('../src/format'),
   Plugins = require('../src/plugins/base');
 
+require('bui-dpl/css/bs3/dpl.css');
+require('bui-dpl/css/bs3/bui.css');
+
 var enumObj = {
     '1': '选项一',
     '2': '选项二'
@@ -89,6 +92,7 @@ var enumObj = {
   }, {
     a: '123'
   }];
+$('<div id="J_Grid"></div>').appendTo('body');
 
 
 var editing = new Plugins.CellEditing,
@@ -107,6 +111,9 @@ var editing = new Plugins.CellEditing,
 
 grid.render();
 
+$('<button class="button" id="btn">按钮</button>').appendTo('body');
+$('<button class="button" id="btnValid">校验</button>').appendTo('body');
+
 $('#btnValid').on('click', function() {
   editing.valid();
 });
@@ -114,81 +121,82 @@ $('#btnValid').on('click', function() {
 describe('测试编辑文本', function() {
   var record = store.getResult()[1],
     editor = null;
-  it('测试触发编辑记录', function() {
-    waits(500);
-    runs(function() {
+  it('测试触发编辑记录', function(done) {
+    setTimeout(function() {
 
       editing.edit(record, 'b');
       editor = editing.getEditor('b');
-      expect(editor).not.toBe(null);
-      expect(editor.get('visible')).toBe(true);
-      expect(editor.get('editValue')).toBe(record['b']);
-    });
+      expect(editor).not.to.be(null);
+      expect(editor.get('visible')).to.be(true);
+      expect(editor.get('editValue')).to.be(record['b']);
+      done();
+    },1000);
   });
 
   it('测试取消编辑记录', function() {
     editing.cancel();
-    expect(editor.get('visible')).toBe(false);
+    expect(editor.get('visible')).to.be(false);
   });
 
-  it('修改值,验证不通过', function() {
+  it('修改值,验证不通过', function(done) {
     editing.edit(record, 'b');
-    expect(editor.get('visible')).toBe(true);
+    expect(editor.get('visible')).to.be(true);
     editor.setValue('123456');
-    expect(editor.isValid()).toBe(false);
+    expect(editor.isValid()).to.be(false);
+
     $('#btn').trigger('mousedown');
-    waits(100);
-    runs(function() {
-      expect(editor.get('visible')).toBe(false);
-    });
+    setTimeout(function() {
+      expect(editor.get('visible')).to.be(false);
+      done();
+    },300);
   });
 
-  it('验证通过修改值', function() {
+  it('验证通过修改值', function(done) {
     editor.setValue('12345');
-    expect(editor.isValid()).toBe(true);
+    expect(editor.isValid()).to.be(true);
     $('#btn').trigger('mousedown');
-    waits(100);
-    runs(function() {
-      expect(editor.get('visible')).toBe(false);
-    });
+    setTimeout(function() {
+      expect(editor.get('visible')).to.be(false);
+      done();
+    },300);
   });
 });
 
-describe('测试编辑日期', function() {
+describe('测试编辑日期', function(done) {
   var record = store.getResult()[1],
     field = 'c',
     editor;
-  it('显示日期编辑器', function() {
-    waits(500);
-    runs(function() {
+  it('显示日期编辑器', function(done) {
+    setTimeout(function() {
       editor = editing.getEditor(field);
       editing.edit(record, field);
-      expect(editor).not.toBe(null);
-      expect(editor.get('visible')).toBe(true);
-    });
+      expect(editor).not.to.be(null);
+      expect(editor.get('visible')).to.be(true);
+      done();
+    },500);
   });
   it('隐藏日期编辑器', function() {
     editing.cancel();
-    expect(editor.get('visible')).toBe(false);
+    expect(editor.get('visible')).to.be(false);
   });
 });
 
-describe('测试编辑选择框', function() {
+describe('测试编辑选择框', function(done) {
   var record = store.getResult()[1],
     field = 'd',
     editor;
-  it('显示选择编辑器', function() {
-    waits(500);
-    runs(function() {
+  it('显示选择编辑器', function(done) {
+    setTimeout(function() {
       editor = editing.getEditor(field);
       editing.edit(record, field);
-      expect(editor).not.toBe(null);
-      expect(editor.get('visible')).toBe(true);
-    });
+      expect(editor).not.to.be(null);
+      expect(editor.get('visible')).to.be(true);
+      done();
+    },500);
   });
   it('隐藏选择编辑器', function() {
     editing.cancel();
-    expect(editor.get('visible')).toBe(false);
+    expect(editor.get('visible')).to.be(false);
   });
 });
 
@@ -196,36 +204,36 @@ describe('测试数字编辑', function() {
   var record = store.getResult()[1],
     field = 'a',
     editor = null;
-  it('显示选择编辑器', function() {
-    waits(500);
-    runs(function() {
+  it('显示选择编辑器', function(done) {
+    setTimeout(function() {
       editor = editing.getEditor(field);
       editing.edit(record, field);
-      expect(editor.getValue()).toBe(record[field]);
-      expect(editor).not.toBe(null);
-      expect(editor.get('visible')).toBe(true);
-    });
+      expect(editor.getValue()).to.be(record[field]);
+      expect(editor).not.to.be(null);
+      expect(editor.get('visible')).to.be(true);
+      done();
+    },500);
   });
   it('隐藏选择编辑器', function() {
     editing.cancel();
-    expect(editor.get('visible')).toBe(false);
+    expect(editor.get('visible')).to.be(false);
   });
 
   it('设置为0', function() {
     editing.edit(record, field);
-    expect(editor).not.toBe(null);
+    expect(editor).not.to.be(null);
     editor.setValue(0);
     editor.accept();
-    expect(editor.get('visible')).toBe(false);
-    expect(record[field]).toBe(0);
+    expect(editor.get('visible')).to.be(false);
+    expect(record[field]).to.be(0);
   });
   it('设置为空格', function() {
     editing.edit(record, field);
-    expect(editor).not.toBe(null);
+    expect(editor).not.to.be(null);
     editor.setValue('');
     editor.accept();
-    expect(editor.get('visible')).toBe(false);
-    expect(record[field]).toBe(null);
+    expect(editor.get('visible')).to.be(false);
+    expect(record[field]).to.be(null);
   });
 
 });
@@ -233,17 +241,19 @@ describe('测试数字编辑', function() {
 describe('表格操作，显示验证信息', function() {
 
   it('未验证表格数据', function() {
-    //expect(editing.isValid()).toBe(true);
+    //expect(editing.isValid()).to.be(true);
   });
 
   it('验证表格数据', function() {
+    var record = store.getResult()[0];
+    store.setValue(record,'a','sss');
     editing.valid();
-    expect(editing.isValid()).toBe(false);
+    expect(editing.isValid()).to.be(false);
   });
 
   it('清理错误', function() {
     editing.clearErrors()
-    expect(editing.isValid()).toBe(true);
+    expect(editing.isValid()).to.be(true);
   });
 
   it('添加数据', function() {
@@ -251,14 +261,14 @@ describe('表格操作，显示验证信息', function() {
       b: '123'
     };
     store.addAt(item, 0);
-    expect(editing.isValid()).toBe(false);
+    expect(editing.isValid()).to.be(false);
   });
 
   it('编辑数据', function() {
     var item = store.findByIndex(0);
     item.c = new Date();
     store.update(item);
-    expect(editing.isValid()).toBe(true);
+    expect(editing.isValid()).to.be(true);
   });
 
 });

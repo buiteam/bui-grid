@@ -249,7 +249,7 @@ BUI.augment(Editing,{
       var field = _self.getFieldConfig(column);
       if(field){
         field.name = column.get('dataIndex');
-        //field.id = column.get('id');
+        field.colId = column.get('id');
         if(field.validator){
           field.validator = _self.wrapValidator(field.validator);
         }
@@ -483,7 +483,7 @@ BUI.augment(Editing,{
         value = record[name] || '',
         error = field.getValidError(value);
       if(error){
-        errors.push({name : name,error : error,id : field.get('id')});
+        errors.push({name : name,error : error,id : field.get('colId')});
       }
     });
     _self.showRecordError(record,errors,row);

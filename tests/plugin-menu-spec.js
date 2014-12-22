@@ -56,17 +56,17 @@ grid.render();
 var el = grid.get('el');
 
 describe('测试菜单生成', function() {
-  it('点击表头显示菜单', function() {
+  it('点击表头显示菜单', function(done) {
     var column = grid.findColumn('menu'),
       triggerEl = column.get('el').find('.bui-grid-hd-menu-trigger');
     column.fire('click', {
       domTarget: triggerEl[0]
     });
-    waits(100);
-    runs(function() {
+    setTimeout(function() {
       var menu = gridMenu.get('menu');
-      expect(menu).not.toBe(undefined);
-      expect(menu.get('visible')).toBe(true);
+      expect(menu).not.to.be(undefined);
+      expect(menu.get('visible')).to.be(true);
+      done();
     });
   });
 });
@@ -75,18 +75,18 @@ describe('测试菜单生成', function() {
 
     it('全部展开',function(){
       cascade.expandAll();
-      expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(data.length);
-      expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).toBe(false);
+      expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(data.length);
+      expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).to.be(false);
     });
 
     it('全部折叠',function(){
       cascade.collapseAll();
-      expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).toBe(true);
+      expect(el.find('.' + CLS_CASCADE_ROW).hasClass(CLS_CASCADE + '-collapse')).to.be(true);
     });
 
     it('清除展开列',function(){
       cascade.removeAll();
-      expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(0);
+      expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(0);
     });
 
     it('测试展开事件',function(){
@@ -119,7 +119,7 @@ describe('测试菜单生成', function() {
     function testColspan(rows){
       $.each(rows,function(index,row){
         var gridRow = $(row).prev();
-        expect($(row).find('.bui-grid-cascade-cell').attr('colspan')).toBe(cascade._getColumnCount(gridRow).toString());
+        expect($(row).find('.bui-grid-cascade-cell').attr('colspan')).to.be(cascade._getColumnCount(gridRow).toString());
       });
     }
     it('测试添加、删除列',function(){
@@ -157,7 +157,7 @@ describe('测试菜单生成', function() {
     it('测试添加纪录',function(){
       var record = {a:'124344'};
       store.add(record);
-      expect(el.find('.bui-grid-cascade').length).toBe(store.getCount());
+      expect(el.find('.bui-grid-cascade').length).to.be(store.getCount());
     });
 
     it('测试删除纪录',function(){
@@ -165,13 +165,13 @@ describe('测试菜单生成', function() {
       store.remove({a:'123'},function(obj1,obj2){
         return obj1.a == obj2.a;
       });
-      expect(el.find('.bui-grid-cascade').length).toBe(store.getCount());
+      expect(el.find('.bui-grid-cascade').length).to.be(store.getCount());
 
     });
 
     it('测试清空纪录',function(){
      store.setResult([]);
-     expect(el.find('.' + CLS_CASCADE_ROW).length).toBe(0);
+     expect(el.find('.' + CLS_CASCADE_ROW).length).to.be(0);
      store.setResult(data);
     });
   });*/

@@ -71,7 +71,7 @@ grid.showData(data);
 var hel = grid.get('header').get('el');
 describe('测试列分组生成', function() {
   it('测试列分组容器', function() {
-    expect(hel.find('.bui-grid-column-group').length).not.toBe(0);
+    expect(hel.find('.bui-grid-column-group').length).not.to.be(0);
   });
 
   it('测试列分组Group', function() {

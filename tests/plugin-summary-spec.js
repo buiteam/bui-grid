@@ -5,7 +5,7 @@ var $ = require('jquery'),
   Grid = require('../src/grid'),
   Plugins = require('../src/plugins/base');
 
-/**/
+/*
 describe('测试汇总行生成', function() {
   var columns = [{
     title: '表头1',
@@ -52,53 +52,50 @@ describe('测试汇总行生成', function() {
 
   describe('测试汇总行生成', function() {
     it('测试汇总行生成', function() {
-      expect(el.find('tfoot').length).not.toBe(0);
-      expect(summary.get('footerEl')).not.toBe(null);
+      expect(el.find('tfoot').length).not.to.be(0);
+      expect(summary.get('footerEl')).not.to.be(null);
     });
   });
 
   describe('测试汇总行加载数据', function() {
 
-    it('测试加载数据,无汇总', function() {
+    it('测试加载数据,无汇总', function(done) {
       store.load({
         type: 0
       });
-      waits(300);
-      runs(function() {
+      setTimeout(function() {
         var pageSummary = summary.get('pageSummary'),
           summaryObj = summary.get('summary');
-        expect(pageSummary).not.toBe(undefined);
+        expect(pageSummary).not.to.be(undefined);
 
-        expect(summaryObj).toBe(undefined);
-
-      });
+        expect(summaryObj).to.be(undefined);
+        done();
+      },300);
     });
-    it('测试加载数据,仅总体汇总', function() {
+    it('测试加载数据,仅总体汇总', function(done) {
       store.load({
         type: 1
       });
-      waits(300);
-      runs(function() {
+      setTimeout(function() {
         var pageSummary = summary.get('pageSummary'),
           summaryObj = summary.get('summary');
-        expect(pageSummary).not.toBe(undefined);
-        expect(summaryObj).not.toBe(undefined);
-
-      });
+        expect(pageSummary).not.to.be(undefined);
+        expect(summaryObj).not.to.be(undefined);
+        done();
+      },300);
     });
 
-    it('测试加载数据,包含所有汇总', function() {
+    it('测试加载数据,包含所有汇总', function(done) {
       store.load({
         type: 2
       });
-      waits(300);
-      runs(function() {
+      setTimeout(function() {
         var pageSummary = summary.get('pageSummary'),
           summaryObj = summary.get('summary');
-        expect(pageSummary).not.toBe(undefined);
-        expect(summaryObj).not.toBe(undefined);
-
-      });
+        expect(pageSummary).not.to.be(undefined);
+        expect(summaryObj).not.to.be(undefined);
+        done();
+      },300);
     });
   });
 
@@ -106,14 +103,14 @@ describe('测试汇总行生成', function() {
     var column = grid.findColumn(1);
     var footerEl = summary.get('footerEl');
     it('测试隐藏列', function() {
-      expect(footerEl.find('.grid-td-' + column.get('id')).length).not.toBe(0);
+      expect(footerEl.find('.grid-td-' + column.get('id')).length).not.to.be(0);
       column.set('visible', false);
-      expect(footerEl.find('.grid-td-' + column.get('id')).length).toBe(0);
+      expect(footerEl.find('.grid-td-' + column.get('id')).length).to.be(0);
     });
 
     it('测试显示列', function() {
       column.set('visible', true);
-      expect(footerEl.find('.grid-td-' + column.get('id')).length).not.toBe(0);
+      expect(footerEl.find('.grid-td-' + column.get('id')).length).not.to.be(0);
     });
   });
 });
@@ -188,9 +185,9 @@ describe('测试本页汇总', function() {
     it('测试汇总行生成', function() {
       var pageSummary = summary.get('pageSummary'),
         summaryObj = summary.get('summary');
-      expect(pageSummary).not.toBe(undefined);
+      expect(pageSummary).not.to.be(undefined);
 
-      expect(summaryObj).toBe(undefined);
+      expect(summaryObj).to.be(undefined);
     });
   });
 
@@ -205,13 +202,13 @@ describe('测试本页汇总', function() {
         },
         prevValue = pageSummary[name];
 
-      expect(pageSummary).not.toBe(undefined);
+      expect(pageSummary).not.to.be(undefined);
       store.add(obj);
 
       pageSummary = summary.get('pageSummary');
       var val = pageSummary[name];
-      expect(val).toBe(prevValue + obj[name]);
-      expect(pageEl.find('.grid-td-b1').text()).toBe(val.toString());
+      expect(val).to.be(prevValue + obj[name]);
+      expect(pageEl.find('.grid-td-b1').text()).to.be(val.toString());
     });
 
     it('测试删除数据', function() {
@@ -224,8 +221,8 @@ describe('测试本页汇总', function() {
 
       pageSummary = summary.get('pageSummary');
       var val = pageSummary[name];
-      expect(val).toBe(prevValue - record[name]);
-      expect(pageEl.find('.grid-td-d1').text()).toBe(val.toString());
+      expect(val).to.be(prevValue - record[name]);
+      expect(pageEl.find('.grid-td-d1').text()).to.be(val.toString());
     });
 
     it('测试更新数据', function() {
@@ -239,16 +236,18 @@ describe('测试本页汇总', function() {
       store.update(record);
       pageSummary = summary.get('pageSummary');
       var val = pageSummary[name];
-      expect(pageEl.find('.grid-td-d1').text()).toBe(val.toString());
+      expect(pageEl.find('.grid-td-d1').text()).to.be(val.toString());
     });
 
     it('测试首行文本', function() {
       var firstCell = pageEl.children().first(),
         title = summary.get('pageSummaryTitle'),
         text = firstCell.text();
-      expect(text.indexOf(title)).not.toBe(-1);
+      expect(text.indexOf(title)).not.to.be(-1);
 
     });
 
   });
 });
+
+*/

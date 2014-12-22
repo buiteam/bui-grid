@@ -5,6 +5,7 @@ var $ = require('jquery'),
   SimpleGrid = require('../src/simplegrid');
 
 
+$('<div id="J_Grid"></div>').appendTo('body');
 
 var columns = [{
     title: '表头1',
@@ -44,11 +45,11 @@ var el = grid.get('el');
 
 describe('测试Grid生成', function() {
   it('测试列的生成', function() {
-    expect(el.find('th').length).toBe(columns.length);
+    expect(el.find('th').length).to.be(columns.length);
   });
 
   it('测试行的生成', function() {
-    expect(el.find('.bui-grid-row').length).toBe(data.length);
+    expect(el.find('.bui-grid-row').length).to.be(data.length);
   });
 });
 
@@ -61,12 +62,12 @@ describe('测试Grid操作', function() {
       b: 'edd'
     }];
     grid.showData(newData);
-    expect(el.find('.bui-grid-row').length).toBe(newData.length);
+    expect(el.find('.bui-grid-row').length).to.be(newData.length);
   });
 
   it('测试清数据', function() {
     grid.clearData();
-    expect(el.find('.bui-grid-row').length).toBe(0);
+    expect(el.find('.bui-grid-row').length).to.be(0);
   });
 
   it('测试重置列', function() {
@@ -76,7 +77,7 @@ describe('测试Grid操作', function() {
       dataIndex: 'd'
     });
     grid.set('columns', columns);
-    expect(el.find('th').length).toBe(columns.length);
+    expect(el.find('th').length).to.be(columns.length);
   });
 
   it('测试选中数据', function() {
@@ -84,7 +85,7 @@ describe('测试Grid操作', function() {
 
     var value = '123';
     grid.setSelectedByField(value);
-    expect(grid.getSelectedValue()).toBe(value);
+    expect(grid.getSelectedValue()).to.be(value);
 
   });
 
@@ -95,10 +96,10 @@ describe('测试Grid操作', function() {
       },
       length = grid.getItemCount();
     grid.addItemAt(record, 0);
-    expect(grid.getItemCount()).toBe(length + 1);
-    expect(grid.getFirstItem()).toBe(record);
+    expect(grid.getItemCount()).to.be(length + 1);
+    expect(grid.getFirstItem()).to.be(record);
     /*grid.removeItemAt(0);
-     expect(grid.getFirstItem()).not.toBe(record);*/
+     expect(grid.getFirstItem()).not.to.be(record);*/
   });
 
 });

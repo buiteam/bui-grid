@@ -5,6 +5,9 @@ var $ = require('jquery'),
   Format = require('../src/format'),
   Grid = require('../src/grid');
 
+require('bui-dpl/css/bs3/dpl.css');
+require('bui-dpl/css/bs3/bui.css');
+
 function getSetWidth(el) {
   var dom = el[0];
   if (dom) {
@@ -252,30 +255,30 @@ describe('测试Grid生成', function() {
         expect(gridEl.hasClass('bui-grid-height')).to.be.ok();
       });
       it('测试滚动条', function() {
-        var callBack = jasmine.createSpy(),
+        var callBack = sinon.spy(),
           left = 30;
         grid.on('scroll', function(e) {
           callBack(e.scrollLeft);
         });
-        spyOn(header, 'scrollTo').andCallThrough();
+        //spyOn(header, 'scrollTo').andCallThrough();
         bodyEl.scrollLeft(left);
-        waits(100);
+        /*waits(100);
         runs(function() {
           expect(callBack).toHaveBeenCalledWith(left);
           expect(header.scrollTo).toHaveBeenCalled();
           expect(header.get('el').scrollLeft()).to.be(left)
           grid.set('width', 800);
-        });
+        });*/
       });
     });
 
     describe("测试分页栏", function() {
-      it('测试加载数据后分页栏的状态', function() {
+      it('测试加载数据后分页栏的状态', function(done) {
         store.load();
-        waits(100);
-        runs(function() {
+        setTimeout(function() {
           expect(grid.get('bbar').get('totalPage')).not.to.be(1);
-        });
+          done();
+        },500);
       });
     });
   });
@@ -284,27 +287,25 @@ describe('测试Grid生成', function() {
   describe("测试Grid 事件", function() {
     var CLS_SELECTED = 'bui-grid-row-selected',
       tableEl = bodyEl.find('table');
-    it('测试Grid，单选模式下点击行', function() {
+    it('测试Grid，单选模式下点击行', function(done) {
 
       var rows = $('.bui-grid-row', tableEl),
         rowEl = $(rows[0]);
       rowEl.trigger('click')
-      waits(100);
-      runs(function() {
+      setTimeout(function() {
         expect(rowEl.hasClass(CLS_SELECTED)).to.be.ok();
-
-      });
+        done();
+      },100);
     });
-    it('测试Grid，测试单元格点击事件', function() {
+    it('测试Grid，测试单元格点击事件', function(done) {
 
       var rows = $('.bui-grid-row', tableEl),
         rowEl = $(rows[0]);
       rowEl.trigger('click')
-      waits(100);
-      runs(function() {
+      setTimeout(function() {
         expect(rowEl.hasClass(CLS_SELECTED)).to.be.ok();
-
-      });
+        done();
+      },100);
     });
 
     it('测试Grid，单选模式移除所有选中', function() {
@@ -312,27 +313,25 @@ describe('测试Grid生成', function() {
       expect($('.' + CLS_SELECTED, tableEl).length).to.be(0);
     });
 
-    it('测试Grid，多选模式下点击行', function() {
+    it('测试Grid，多选模式下点击行', function(done) {
 
       var rows = $('.bui-grid-row', tableEl),
         rowEl = $(rows[0]);
       grid.set('multipleSelect', true);
       rowEl.trigger('click');
-      waits(100);
-      runs(function() {
+      setTimeout(function() {
         expect(rowEl.hasClass(CLS_SELECTED)).to.be.ok();
         $(rows[1]).trigger('click');
-        waits(100);
-        runs(function() {
+        setTimeout(function() {
           expect($('.' + CLS_SELECTED, tableEl).length).to.be(2);
           rowEl.trigger('click');
-          waits(100);
-          runs(function() {
+          setTimeout(function() {
             expect(rowEl.hasClass(CLS_SELECTED)).not.to.be.ok();
-          });
-        });
+            done();
+          },100);
+        },100);
 
-      });
+      },100);
     });
 
     it('测试Grid，设置、获取选中', function() {
@@ -362,6 +361,9 @@ describe('测试Grid生成', function() {
   });
 
 });
+
+$('<div id="J_Grid1"></div>').appendTo('body');
+
 
 describe('测试Grid自适应', function() {
 
@@ -413,7 +415,6 @@ describe('测试Grid自适应', function() {
   describe("测试Grid forceFit = true", function() {
     var emptyCell = header.get('el').find('.bui-grid-hd-empty');
     it('测试表格宽度默认等于容器宽度', function() {
-      expect(grid.get('width')).to.be($('#J_Grid1').width());
       expect(grid.get('width')).to.be($('#J_Grid1').width());
     });
     it('测试列自适应', function() {

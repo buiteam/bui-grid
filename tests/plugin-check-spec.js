@@ -57,21 +57,21 @@ describe("测试生成check列", function() {
 
   it('测试生成表头', function() {
     var col = columns[0];
-    expect(header.get('el').find('.' + CLS_CHECKBOX)).not.toBe(null);
-    expect(col.get('el').find('.' + CLS_CHECKBOX)).not.toBe(null);
+    expect(header.get('el').find('.' + CLS_CHECKBOX)).not.to.be(null);
+    expect(col.get('el').find('.' + CLS_CHECKBOX)).not.to.be(null);
   });
 
   it('测试生成内容', function() {
     var
       rows = bodyEl.find('.bui-grid-row');
     rows.each(function(index, row) {
-      expect($(row).find('.bui-grid-checkBox')).not.toBe(null);
+      expect($(row).find('.bui-grid-checkBox')).not.to.be(null);
     });
 
   });
   it('测试默认选中', function() {
     var item = data[0];
-    expect(grid.hasStatus(item, 'selected')).toBe(true);
+    expect(grid.hasStatus(item, 'selected')).to.be(true);
   });
 });
 
@@ -82,17 +82,16 @@ describe("测试事件", function() {
     rows = bodyEl.find('.bui-grid-row');
   it('测试选中表头', function() {
 
-    expect(colCheckBox).not.toBe(null);
+    expect(colCheckBox).not.to.be(null);
     var checked = colEl.hasClass('checked');
     /**/
     //colCheckBox.attr('checked',!checked);
     colCheckBox.trigger('click');
-    waits(300);
     /*runs(function(){
-				expect(colEl.hasClass('checked')).toBe(!checked);
+				expect(colEl.hasClass('checked')).to.be(!checked);
 				rows.each(function(index,row){
 					if(!grid.hasStatus(null,'disabled',row)){
-						expect(grid.hasStatus(null,'selected',row)).toBe(!checked);
+						expect(grid.hasStatus(null,'selected',row)).to.be(!checked);
 					}
 					
 				});
@@ -103,14 +102,13 @@ describe("测试事件", function() {
   it('测试取消选中表头', function() {
     colEl.addClass('checked');
     colCheckBox.trigger('click');
-    waits(300);
-    runs(function() {
-      expect(!!colEl.hasClass('checked')).toBe(false);
+    setTimeout(function() {
+      expect(!!colEl.hasClass('checked')).to.be(false);
       rows.each(function(index, row) {
         if (!grid.hasStatus(null, 'disabled', row)) {
-          expect($(row).hasClass('bui-grid-row-selected')).toBe(false);
+          expect($(row).hasClass('bui-grid-row-selected')).to.be(false);
         }
       });
-    });
+    },300);
   });
 });
