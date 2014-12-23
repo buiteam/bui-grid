@@ -21,7 +21,9 @@ var BUI = require('bui-common'),
     RowNumber : require('./rownumber'),
     ColumnGroup : require('./columngroup'),
     RowGroup : require('./rowgroup'),
-    ColumnResize : require('./columnresize')
+    ColumnResize : require('./columnresize'),
+    ColumnChecked : require('./columnchecked')
+
   });
 
 module.exports = Plugins;
