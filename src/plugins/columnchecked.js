@@ -75,6 +75,7 @@ BUI.augment(Checked,{
           field = ev.field,
           value = record[field];
         store.setValue(record,field,!value);
+        return false; //阻止默认行为
       }
     });
   }

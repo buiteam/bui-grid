@@ -1,4 +1,4 @@
-define("bui-grid/1.1.2/index-debug", ["bui-common/1.1.2/common-debug","jquery","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug","bui-mask/1.1.1/index-debug","bui-toolbar/1.1.1/index-debug","bui-menu/1.1.1/index-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/index-debug", ["bui-common/1.1.2/common-debug","jquery","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug","bui-mask/1.1.1/index-debug","bui-toolbar/1.1.1/index-debug","bui-menu/1.1.2/index-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格命名空间入口
  * @ignore
@@ -8,18 +8,18 @@ var BUI = require("bui-common/1.1.2/common-debug"),
   Grid = BUI.namespace('Grid');
 
 BUI.mix(Grid, {
-  SimpleGrid : require("bui-grid/1.1.2/src/simplegrid-debug"),
-  Grid : require("bui-grid/1.1.2/src/grid-debug"),
-  Column : require("bui-grid/1.1.2/src/column-debug"),
-  Header : require("bui-grid/1.1.2/src/header-debug"),
-  Format : require("bui-grid/1.1.2/src/format-debug"),
-  Plugins : require("bui-grid/1.1.2/src/plugins/base-debug")
+  SimpleGrid : require("bui-grid/1.1.3/src/simplegrid-debug"),
+  Grid : require("bui-grid/1.1.3/src/grid-debug"),
+  Column : require("bui-grid/1.1.3/src/column-debug"),
+  Header : require("bui-grid/1.1.3/src/header-debug"),
+  Format : require("bui-grid/1.1.3/src/format-debug"),
+  Plugins : require("bui-grid/1.1.3/src/plugins/base-debug")
 });
 
 module.exports = Grid;
 
 });
-define("bui-grid/1.1.2/src/simplegrid-debug", ["jquery","bui-common/1.1.2/common-debug","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/simplegrid-debug", ["jquery","bui-common/1.1.2/common-debug","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug"], function(require, exports, module){
 /**
  * @fileOverview 简单表格,仅用于展示数据
  * @author dxq613@gmail.com
@@ -374,7 +374,7 @@ simpleGrid.View = simpleGridView;
 module.exports = simpleGrid;
 
 });
-define("bui-grid/1.1.2/src/grid-debug", ["jquery","bui-common/1.1.2/common-debug","bui-mask/1.1.1/index-debug","bui-toolbar/1.1.1/index-debug","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/grid-debug", ["jquery","bui-common/1.1.2/common-debug","bui-mask/1.1.1/index-debug","bui-toolbar/1.1.1/index-debug","bui-list/1.1.2/index-debug","bui-data/1.1.2/index-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格
  * @ignore
@@ -389,8 +389,8 @@ var $ = require('jquery'),
   Component = BUI.Component,
   toolbar = require("bui-toolbar/1.1.1/index-debug"),
   List = require("bui-list/1.1.2/index-debug"),
-  Header = require("bui-grid/1.1.2/src/header-debug"),
-  Column = require("bui-grid/1.1.2/src/column-debug");
+  Header = require("bui-grid/1.1.3/src/header-debug"),
+  Column = require("bui-grid/1.1.3/src/column-debug");
 
 function isPercent(str){
   if(BUI.isString(str)){
@@ -1706,7 +1706,7 @@ module.exports = grid;
  */
 
 });
-define("bui-grid/1.1.2/src/header-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/header-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格的头部
  * @author dxq613@gmail.com, yiminghe@gmail.com
@@ -1717,7 +1717,7 @@ var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug"),
   PREFIX = BUI.prefix,
   Grid = BUI.namespace('Grid'),
-  Column = require("bui-grid/1.1.2/src/column-debug"),
+  Column = require("bui-grid/1.1.3/src/column-debug"),
   View = BUI.Component.View,
   Controller = BUI.Component.Controller,
   CLS_SCROLL_WITH = 17,
@@ -2208,7 +2208,7 @@ var header = Controller.extend(
 module.exports = header;
 
 });
-define("bui-grid/1.1.2/src/column-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/column-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview This class specifies the definition for a column of a grid.
  * @author dxq613@gmail.com
@@ -2713,7 +2713,7 @@ column.Empty = column.extend({
 module.exports = column;
 
 });
-define("bui-grid/1.1.2/src/format-debug", ["jquery"], function(require, exports, module){
+define("bui-grid/1.1.3/src/format-debug", ["jquery"], function(require, exports, module){
 /**
  * @fileOverview this class details some util tools of grid,like loadMask, formatter for grid's cell render
  * @author dxq613@gmail.com, yiminghe@gmail.com
@@ -2861,39 +2861,39 @@ var Format =
 module.exports = Format;
 
 });
-define("bui-grid/1.1.2/src/plugins/base-debug", ["bui-common/1.1.2/common-debug","jquery","bui-menu/1.1.1/index-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/base-debug", ["bui-common/1.1.2/common-debug","jquery","bui-menu/1.1.2/index-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格插件的入口
  * @author dxq613@gmail.com, yiminghe@gmail.com
  * @ignore
  */
 var BUI = require("bui-common/1.1.2/common-debug"),
-  Selection = require("bui-grid/1.1.2/src/plugins/selection-debug"),
+  Selection = require("bui-grid/1.1.3/src/plugins/selection-debug"),
 
   Plugins = {};
 
   BUI.mix(Plugins,{
     CheckSelection : Selection.CheckSelection,
     RadioSelection : Selection.RadioSelection,
-    Cascade : require("bui-grid/1.1.2/src/plugins/cascade-debug"),
-    CellEditing : require("bui-grid/1.1.2/src/plugins/cellediting-debug"),
-    RowEditing : require("bui-grid/1.1.2/src/plugins/rowediting-debug"),
-    DialogEditing : require("bui-grid/1.1.2/src/plugins/dialog-debug"),
-    AutoFit : require("bui-grid/1.1.2/src/plugins/autofit-debug"),
-    GridMenu : require("bui-grid/1.1.2/src/plugins/gridmenu-debug"),
-    Summary : require("bui-grid/1.1.2/src/plugins/summary-debug"),
-    RowNumber : require("bui-grid/1.1.2/src/plugins/rownumber-debug"),
-    ColumnGroup : require("bui-grid/1.1.2/src/plugins/columngroup-debug"),
-    RowGroup : require("bui-grid/1.1.2/src/plugins/rowgroup-debug"),
-    ColumnResize : require("bui-grid/1.1.2/src/plugins/columnresize-debug"),
-    ColumnChecked : require("bui-grid/1.1.2/src/plugins/columnchecked-debug")
+    Cascade : require("bui-grid/1.1.3/src/plugins/cascade-debug"),
+    CellEditing : require("bui-grid/1.1.3/src/plugins/cellediting-debug"),
+    RowEditing : require("bui-grid/1.1.3/src/plugins/rowediting-debug"),
+    DialogEditing : require("bui-grid/1.1.3/src/plugins/dialog-debug"),
+    AutoFit : require("bui-grid/1.1.3/src/plugins/autofit-debug"),
+    GridMenu : require("bui-grid/1.1.3/src/plugins/gridmenu-debug"),
+    Summary : require("bui-grid/1.1.3/src/plugins/summary-debug"),
+    RowNumber : require("bui-grid/1.1.3/src/plugins/rownumber-debug"),
+    ColumnGroup : require("bui-grid/1.1.3/src/plugins/columngroup-debug"),
+    RowGroup : require("bui-grid/1.1.3/src/plugins/rowgroup-debug"),
+    ColumnResize : require("bui-grid/1.1.3/src/plugins/columnresize-debug"),
+    ColumnChecked : require("bui-grid/1.1.3/src/plugins/columnchecked-debug")
 
   });
 
 module.exports = Plugins;
 
 });
-define("bui-grid/1.1.2/src/plugins/selection-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/selection-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 选择的插件
  * @ignore
@@ -3089,7 +3089,7 @@ var Selection  = {
 module.exports = Selection;
 
 });
-define("bui-grid/1.1.2/src/plugins/cascade-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/cascade-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 级联表格
  * @ignore
@@ -3478,14 +3478,14 @@ BUI.augment(cascade,
 module.exports = cascade;
 
 });
-define("bui-grid/1.1.2/src/plugins/cellediting-debug", ["jquery"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/cellediting-debug", ["jquery"], function(require, exports, module){
 /**
  * @fileOverview 表格单元格编辑
  * @ignore
  */
 
 var $ = require('jquery'),
-  Editing = require("bui-grid/1.1.2/src/plugins/editing-debug"),
+  Editing = require("bui-grid/1.1.3/src/plugins/editing-debug"),
   CLS_BODY = BUI.prefix + 'grid-body',
   CLS_CELL = BUI.prefix + 'grid-cell';
 
@@ -3645,7 +3645,7 @@ BUI.augment(CellEditing,{
 module.exports = CellEditing;
 
 });
-define("bui-grid/1.1.2/src/plugins/editing-debug", ["jquery"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/editing-debug", ["jquery"], function(require, exports, module){
 /**
  * @fileOverview 表格编辑插件
  * @ignore
@@ -4211,7 +4211,7 @@ BUI.augment(Editing,{
 module.exports = Editing;
 
 });
-define("bui-grid/1.1.2/src/plugins/rowediting-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/rowediting-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格行编辑
  * @ignore
@@ -4219,7 +4219,7 @@ define("bui-grid/1.1.2/src/plugins/rowediting-debug", ["jquery","bui-common/1.1.
 
  var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug"),
-  Editing = require("bui-grid/1.1.2/src/plugins/editing-debug"),
+  Editing = require("bui-grid/1.1.3/src/plugins/editing-debug"),
   CLS_ROW = BUI.prefix + 'grid-row';
 
 /**
@@ -4458,7 +4458,7 @@ BUI.augment(RowEditing,{
 module.exports = RowEditing;
 
 });
-define("bui-grid/1.1.2/src/plugins/dialog-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/dialog-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格跟表单联用
  * @ignore
@@ -4724,7 +4724,7 @@ BUI.augment(Dialog,{
 module.exports = Dialog;
 
 });
-define("bui-grid/1.1.2/src/plugins/autofit-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/autofit-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 自动适应表格宽度的扩展
  * @ignore
@@ -4787,7 +4787,7 @@ BUI.augment(AutoFit,{
 module.exports = AutoFit;
 
 });
-define("bui-grid/1.1.2/src/plugins/gridmenu-debug", ["jquery","bui-common/1.1.2/common-debug","bui-menu/1.1.1/index-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/gridmenu-debug", ["jquery","bui-common/1.1.2/common-debug","bui-menu/1.1.2/index-debug"], function(require, exports, module){
 /**
  * @fileOverview Grid 菜单
  * @ignore
@@ -4795,7 +4795,7 @@ define("bui-grid/1.1.2/src/plugins/gridmenu-debug", ["jquery","bui-common/1.1.2/
 
 var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug"),
-  Menu = require("bui-menu/1.1.1/index-debug"),
+  Menu = require("bui-menu/1.1.2/index-debug"),
   PREFIX = BUI.prefix,
   ID_SORT_ASC = 'sort-asc',
   ID_SORT_DESC = 'sort-desc',
@@ -5035,7 +5035,7 @@ BUI.augment(gridMenu,{
 module.exports = gridMenu;
 
 });
-define("bui-grid/1.1.2/src/plugins/summary-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/summary-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 表格数据汇总
  * @author dxq613@gmail.com
@@ -5367,7 +5367,7 @@ BUI.augment(summary,{
 module.exports = summary;
 
 });
-define("bui-grid/1.1.2/src/plugins/rownumber-debug", [], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/rownumber-debug", [], function(require, exports, module){
 var CLS_NUMBER = 'x-grid-rownumber';
 /**
  * @class BUI.Grid.Plugins.RowNumber
@@ -5417,7 +5417,7 @@ BUI.augment(RowNumber,
 module.exports = RowNumber;
 
 });
-define("bui-grid/1.1.2/src/plugins/columngroup-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/columngroup-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 
 var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug"),
@@ -5525,7 +5525,7 @@ BUI.augment(Group,{
 module.exports = Group;
 
 });
-define("bui-grid/1.1.2/src/plugins/rowgroup-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/rowgroup-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 
 var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug"),
@@ -5696,7 +5696,7 @@ BUI.augment(Group,{
 module.exports = Group;
 
 });
-define("bui-grid/1.1.2/src/plugins/columnresize-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/columnresize-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 /**
  * @fileOverview 拖拽改变列的宽度
  * @ignore
@@ -5908,7 +5908,7 @@ BUI.augment(Resize,{
 module.exports = Resize;
 
 });
-define("bui-grid/1.1.2/src/plugins/columnchecked-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
+define("bui-grid/1.1.3/src/plugins/columnchecked-debug", ["jquery","bui-common/1.1.2/common-debug"], function(require, exports, module){
 var $ = require('jquery'),
   BUI = require("bui-common/1.1.2/common-debug");
 
@@ -5986,6 +5986,7 @@ BUI.augment(Checked,{
           field = ev.field,
           value = record[field];
         store.setValue(record,field,!value);
+        return false; //阻止默认行为
       }
     });
   }
