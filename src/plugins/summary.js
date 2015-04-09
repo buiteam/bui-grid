@@ -266,7 +266,7 @@ BUI.augment(summary,{
       }
       firstCell.html(getInnerTemplate(text));
     }else{
-      firstCell.html(getInnerTemplate(title + ':'));
+      firstCell.html(getInnerTemplate(title + ': '));
     }
   },
   //获取汇总模板
